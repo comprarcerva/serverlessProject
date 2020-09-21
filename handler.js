@@ -18,9 +18,14 @@ module.exports.saveUserFavorites = (event, context, callback) => {
   console.log('saveUserFavorites lambda called');
   console.log(event);
 
-  var item = event.Records.dynamodb.NewImage;
-  console.log(item);
+  var item_userID = event.userId;
+  console.log(item_userID);
+  var item_cervejaTipo = event.currentIntent.slots.cervaTipo;
+  console.log(item_cervejaTipo);
+  var item_cervejaTamanho = event.currentIntent.slots.cervejaTamanho;
+  console.log(item_cervejaTamanho);
+  
 
-  userFavorites(item.userId.S, item.cervaTipo.S, item.cervejaTamanho.S);
+  userFavorites(item_userID.S, item_cervejaTipo.S, item_cervejaTamanho.S);
   callback(null, null);
 };
