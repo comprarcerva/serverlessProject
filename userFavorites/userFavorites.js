@@ -2,10 +2,10 @@
 
 const databaseManager = require('../databaseManager');
 
-module.exports = function(userId, ListaBrejas, cervejaTamanho) {
-  console.log(userId + ' ' + ListaBrejas + ' ' + cervejaTamanho);
+module.exports = function(item_userID, item_cervejaTipo, item_cervejaTamanho) {
+  console.log(item_userID + ' ' + item_cervejaTipo + ' ' + item_cervejaTamanho);
 
-  databaseManager.saveUserToDatabase(userId, ListaBrejas, cervejaTamanho).then(item => {
+  databaseManager.saveUserToDatabase(item_cervejaTipo, item_cervejaTipo, item_cervejaTamanho).then(item => {
     console.log(item);
   });
 };

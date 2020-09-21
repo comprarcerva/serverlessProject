@@ -24,8 +24,7 @@ module.exports.saveUserFavorites = (event, context, callback) => {
   console.log(item_cervejaTipo);
   var item_cervejaTamanho = event.currentIntent.slots.cervejaTamanho;
   console.log(item_cervejaTamanho);
-  
 
-  userFavorites(item_userID.S, item_cervejaTipo.S, item_cervejaTamanho.S);
+  userFavorites(item_userID, item_cervejaTipo, item_cervejaTamanho);
   callback(null, null);
 };

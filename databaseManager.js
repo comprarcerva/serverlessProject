@@ -18,13 +18,15 @@ module.exports.saveOrderToDatabase = function(userId, cervaTipo, cervejaTamaho) 
   return saveItemToTable('ComprarCervaPedido', item);
 };
 
-module.exports.saveUserToDatabase = function(userId, cervaTipo, cervejaTamaho) {
+module.exports.saveUserToDatabase = function(item_userId, item_cervaTipo, item_cervejaTamaho) {
   console.log('saveUserToDatabase');
 
   const item = {};
-  item.cervaTipo = cervaTipo;
-  item.cervejaTamanho = cervejaTamaho;
-  item.userId = userId;
+  item.cervaTipo = item_cervaTipo;
+  item.cervejaTamanho = item_cervejaTamaho;
+  item.userId = item_userId;
+
+  console.log(item);
 
   return saveItemToTable('ComprarCervaUser', item);
 };
