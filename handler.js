@@ -16,6 +16,7 @@ module.exports.intents = (event, context, callback) => {
 
 module.exports.saveUserFavorites = (event, context, callback) => {
   console.log('saveUserFavorites lambda called');
+  console.log('new log');
   console.log(event);
 
   var item_userID = event.userId;
