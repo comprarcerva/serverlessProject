@@ -128,9 +128,10 @@ module.exports = function(intentRequest) {
     }
 
     //If size is not define then set it as normal
-    if (cervejaTamanho == null) {
-      intentRequest.currentIntent.slots.cervejaTamanho = '300ml';
-    }
+    //if (cervejaTamanho == null) {
+    //  intentRequest.currentIntent.slots.cervejaTamanho = '300ml';
+    //}
+    
     return Promise.resolve(lexResponses.delegate(intentRequest.sessionAttributes, intentRequest.currentIntent.slots));
   }
 };
