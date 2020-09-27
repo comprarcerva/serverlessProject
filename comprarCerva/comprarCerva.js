@@ -13,4 +13,8 @@ module.exports = function(intentRequest) {
   if (source === 'FulfillmentCodeHook') {
     return handleFulfillmentCodeHook(intentRequest);
   }
+  
+  else {
+    //console.log('entrou no else');
+  }
 };

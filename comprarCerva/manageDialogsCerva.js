@@ -3,6 +3,7 @@
 const lexResponses = require('../lexResponses');
 const databaseManager = require('../databaseManager');
 const _ = require('lodash');
+//const manageFullfilmentCerva = require('./manageFullfilmentCerva');
 
 const tipos = ['IPA', 'PILSEN', 'CANTILLON', 'STOUT'];
 const tamanhos = ['300ml', '500ml', '1L'];
@@ -111,10 +112,13 @@ module.exports = function(intentRequest) {
   } else {
     const validationResult = validateBeerOrder(cervaTipo, cervejaTamanho);
 
+    //console.log('INICIO - cervaTipo:' + cervaTipo + 'cervejaTamanho:' + cervejaTamanho + 'resultado: ' + validationResult.isValid);
+
     if (!validationResult.isValid) {
-      slots[`${validationResult.violatedSlot}`] = null;
+      slots['${validationResult.violatedSlot}'] = null;
+      //console.log('ENTROU NO IF');
       return Promise.resolve(
-        lexResponses.elicitSlot(
+        lexResponses.elicitSlot( 
           intentRequest.sessionAttributes,
           intentRequest.currentIntent.name,
           slots,
@@ -132,6 +136,10 @@ module.exports = function(intentRequest) {
     //  intentRequest.currentIntent.slots.cervejaTamanho = '300ml';
     //}
     
+
+    
     return Promise.resolve(lexResponses.delegate(intentRequest.sessionAttributes, intentRequest.currentIntent.slots));
+    //return Promise.resolve(lexResponses.close(intentRequest.sessionAttributes, 'Fulfilled', null));
+      
   }
 };

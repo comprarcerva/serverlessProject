@@ -7,7 +7,7 @@ const _ = require('lodash');
 const dynamo = new AWS.DynamoDB.DocumentClient();
 
 module.exports.saveOrderToDatabase = function(userId, cervaTipo, cervejaTamaho) {
-  console.log('saveOrderToDatabase');
+  //console.log('saveOrderToDatabase');
 
   const item = {};
   item.orderId = uuidV1();
@@ -19,14 +19,14 @@ module.exports.saveOrderToDatabase = function(userId, cervaTipo, cervejaTamaho) 
 };
 
 module.exports.saveUserToDatabase = function(item_userId, item_cervaTipo, item_cervejaTamaho) {
-  console.log('saveUserToDatabase');
+  //console.log('saveUserToDatabase');
 
   const item = {};
   item.cervaTipo = item_cervaTipo;
   item.cervejaTamanho = item_cervejaTamaho;
   item.userId = item_userId;
 
-  console.log(item);
+  //console.log(item);
 
   return saveItemToTable('ComprarCervaUser', item);
 };
@@ -43,7 +43,7 @@ module.exports.findUserFavorite = function(userId) {
 
   return getAsync(params).then(response => {
     if (_.isEmpty(response)) {
-      console.log(`Usuário com userId:${userId} não encontrado`);
+      //console.log(`Usuário com userId:${userId} não encontrado`);
       return Promise.reject(new Error(`Usuário com userId:${userId} não encontrado.`));
     }
     return response.Item;
@@ -60,7 +60,7 @@ function saveItemToTable(tableName, item) {
 
   return putAsync(params)
     .then(() => {
-      console.log(`Salvando item ${JSON.stringify(item)}`);
+      //console.log(`Salvando item ${JSON.stringify(item)}`);
       return item;
     })
     .catch(error => {
